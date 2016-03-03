@@ -1,0 +1,100 @@
+01-03-2016 23:26:25.136 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=1,ip=88.168.100.69,category=Baladeur
+01-03-2016 23:26:25.138 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=2,ip=157.55.34.94,category=Portable,options=Ecran 13|Disque 256Go
+01-03-2016 23:26:25.139 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=3,ip=193.57.67.241,category=Mobile,brand=Apple
+01-03-2016 23:26:25.141 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=4,ip=80.215.32.142,email=client5@gmail.com,sex=M,brand=Apple,name=iPod Touch,model=iPod Touch - Violet - Disque 32Go,category=Baladeur,color=Violet,options=Disque 32Go,price=329.0
+01-03-2016 23:26:25.141 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=5,ip=83.152.90.13,category=Tablette
+01-03-2016 23:26:25.141 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=6,ip=88.166.255.31,email=client7@gmail.com,sex=F,brand=Google,name=Nexus 10,model=Nexus 10 - Disque 32Go,category=Tablette,options=Disque 32Go,price=499.0
+01-03-2016 23:26:25.141 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=7,ip=90.53.191.23,category=Mobile
+01-03-2016 23:26:25.142 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=8,ip=150.70.97.127,email=client9@gmail.com,sex=M,brand=Apple,name=iPhone 5S,model=iPhone 5S - Argent - Disque 64Go,category=Mobile,color=Argent,options=Disque 64Go,price=899.0
+01-03-2016 23:26:25.142 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=9,ip=80.78.9.34,category=Tablette,brand=Google
+01-03-2016 23:26:25.142 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=10,ip=90.50.54.145,email=client11@gmail.com,sex=M,brand=Apple,name=iPod Nano,model=iPod Nano - Gris sideral - Disque 16Go,category=Baladeur,color=Gris sideral,options=Disque 16Go,price=179.0
+01-03-2016 23:26:25.142 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=11,ip=184.75.209.18,email=client12@gmail.com,sex=M,brand=Apple,name=Macbook Air,model=Macbook Air - Ecran 13 - Disque 128Go,category=Portable,options=Ecran 13|Disque 128Go,price=1099.0
+01-03-2016 23:26:25.143 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=12,ip=88.163.208.90,brand=Apple,name=Macbook Pro Rétina,model=Macbook Pro Rétina - Ecran 13 - Core i5 - Disque 256Go,category=Portable,options=Ecran 13|Core i5|Disque 256Go,price=1699.0
+01-03-2016 23:26:25.143 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=13,ip=92.132.175.218,category=Tablette
+01-03-2016 23:26:25.143 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=14,ip=92.135.181.173,category=Baladeur,color=Argent,options=Disque 32Go
+01-03-2016 23:26:25.143 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=15,ip=92.90.16.190,category=Ordinateur,brand=Apple
+01-03-2016 23:26:25.144 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=16,ip=123.125.71.13,brand=Apple,name=iPod Touch,model=iPod Touch - Rose - Disque 64Go,category=Baladeur,color=Rose,options=Disque 64Go,price=449.0
+01-03-2016 23:26:25.144 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=17,ip=90.9.130.28,category=Mobile
+01-03-2016 23:26:25.144 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=18,ip=90.15.77.193,category=Baladeur,brand=Apple,color=Jaune,options=Disque 32Go
+01-03-2016 23:26:25.144 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=19,ip=150.70.97.117,category=Baladeur
+01-03-2016 23:26:25.144 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=20,ip=62.160.254.157,email=client21@gmail.com,sex=M,brand=Apple,name=iPod Touch,model=iPod Touch - Vert - Disque 32Go,category=Baladeur,color=Vert,options=Disque 32Go,price=329.0
+01-03-2016 23:26:25.144 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=21,ip=93.174.145.106,category=Ordinateur,brand=Apple
+01-03-2016 23:26:25.145 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=22,ip=109.7.26.228,category=Mobile,color=Noir
+01-03-2016 23:26:25.145 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=23,ip=217.69.16.122,category=Portable
+01-03-2016 23:26:25.145 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=24,ip=88.163.208.90,brand=Apple,name=iPod Touch,model=iPod Touch - Argent - Disque 64Go,category=Baladeur,color=Argent,options=Disque 64Go,price=449.0
+01-03-2016 23:26:25.145 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=25,ip=82.123.40.97,category=Mobile
+01-03-2016 23:26:25.145 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=26,ip=79.88.145.68,category=Mobile,color=Noir
+01-03-2016 23:26:25.145 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=27,ip=62.212.96.45,category=Mobile,brand=Apple
+01-03-2016 23:26:25.146 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=28,ip=78.122.53.38,brand=Apple,name=iPod Shuffle,model=iPod Shuffle - Bleu - Disque 2Go,category=Baladeur,color=Bleu,options=Disque 2Go,price=55.0
+01-03-2016 23:26:25.146 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=29,ip=77.196.115.82,email=client30@gmail.com,sex=M,brand=Apple,name=iMac,model=iMac - Ecran 27 - NVIDIA GeForce GT 755M,category=Ordinateur,options=Ecran 27|NVIDIA GeForce GT 755M,price=1799.0
+01-03-2016 23:26:25.146 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=30,ip=109.218.39.112,email=client31@gmail.com,sex=F,brand=Apple,name=iPad 2,model=iPad 2 - Blanc,category=Tablette,color=Blanc,price=409.0
+01-03-2016 23:26:25.146 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=31,ip=81.255.131.233,category=Mobile
+01-03-2016 23:26:25.147 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=32,ip=217.77.77.226,brand=Google,name=Nexus 4,model=Nexus 4 - Noir - Disque 16Go,category=Mobile,color=Noir,options=Disque 16Go,price=199.0
+01-03-2016 23:26:25.147 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=33,ip=90.7.26.116,category=Baladeur,brand=Apple
+01-03-2016 23:26:25.147 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=34,ip=80.215.33.111,category=Baladeur,color=Bleu,options=Disque 16Go
+01-03-2016 23:26:25.147 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=35,ip=84.5.189.224,category=Mobile
+01-03-2016 23:26:25.147 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=36,ip=77.192.114.164,email=client37@gmail.com,sex=F,brand=Apple,name=iPhone 5C,model=iPhone 5C - Vert - Disque 32Go,category=Mobile,color=Vert,options=Disque 32Go,price=699.0
+01-03-2016 23:26:25.147 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=37,ip=109.218.39.112,email=client38@gmail.com,sex=M,brand=Apple,name=iPod Classic,model=iPod Classic - Noir - Disque 160Go,category=Baladeur,color=Noir,options=Disque 160Go,price=299.0
+01-03-2016 23:26:25.148 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=38,ip=90.84.144.220,email=client39@gmail.com,sex=M,brand=Apple,name=iPod Nano,model=iPod Nano - Gris sideral - Disque 16Go,category=Baladeur,color=Gris sideral,options=Disque 16Go,price=179.0
+01-03-2016 23:26:25.148 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=39,ip=108.161.112.220,category=Tablette,brand=Google
+01-03-2016 23:26:25.148 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=40,ip=80.14.37.69,brand=Apple,name=iPod Shuffle,model=iPod Shuffle - Vert - Disque 2Go,category=Baladeur,color=Vert,options=Disque 2Go,price=55.0
+01-03-2016 23:26:25.148 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=41,ip=78.251.84.243,category=Baladeur
+01-03-2016 23:26:25.148 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=42,ip=94.247.174.83,category=Baladeur,brand=Apple,color=Vert,options=Disque 2Go
+01-03-2016 23:26:25.148 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=43,ip=65.55.24.219,category=Baladeur
+01-03-2016 23:26:25.149 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=44,ip=82.238.94.195,brand=Google,name=Nexus 10,model=Nexus 10 - Disque 32Go,category=Tablette,options=Disque 32Go,price=499.0
+01-03-2016 23:26:25.150 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=45,ip=82.67.41.46,category=Mobile,brand=Apple
+01-03-2016 23:26:25.150 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=46,ip=184.75.209.18,category=Mobile,color=Noir,options=Disque 16Go
+01-03-2016 23:26:25.150 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=47,ip=109.2.96.202,category=Mobile
+01-03-2016 23:26:25.151 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=48,ip=62.160.254.247,email=client49@gmail.com,sex=F,brand=Apple,name=iPod Touch,model=iPod Touch - Product RED - Disque 64Go,category=Baladeur,color=Product RED,options=Disque 64Go,price=449.0
+01-03-2016 23:26:25.151 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=49,ip=90.52.64.247,category=Baladeur
+01-03-2016 23:26:25.151 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=50,ip=159.50.249.150,email=client51@gmail.com,sex=M,brand=Samsung,name=Galaxy S3,model=Galaxy S3 - Blanc,category=Mobile,color=Blanc,price=351.52
+01-03-2016 23:26:25.151 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=51,ip=82.66.10.102,category=Portable,brand=Apple
+01-03-2016 23:26:25.151 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=52,ip=188.165.245.107,brand=Apple,name=iPod Touch,model=iPod Touch - Gris sideral - Disque 32Go,category=Baladeur,color=Gris sideral,options=Disque 32Go,price=329.0
+01-03-2016 23:26:25.152 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=53,ip=78.212.96.87,category=Baladeur
+01-03-2016 23:26:25.152 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=54,ip=217.77.77.226,email=client55@gmail.com,sex=F,brand=Apple,name=iPhone 5S,model=iPhone 5S - Argent - Disque 32Go,category=Mobile,color=Argent,options=Disque 32Go,price=799.0
+01-03-2016 23:26:25.152 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=55,ip=85.17.156.99,category=Mobile
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=56,ip=83.152.90.13,brand=Apple,name=iPod Touch,model=iPod Touch - Rose - Disque 64Go,category=Baladeur,color=Rose,options=Disque 64Go,price=449.0
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=57,ip=92.90.16.32,category=Baladeur,brand=Apple
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=58,ip=80.82.239.10,category=Portable,options=Ecran 11|Disque 256Go
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=59,ip=192.54.145.66,category=Baladeur
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=60,ip=93.1.160.26,brand=Apple,name=iPhone 5C,model=iPhone 5C - Vert - Disque 32Go,category=Mobile,color=Vert,options=Disque 32Go,price=699.0
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=61,ip=82.66.250.41,category=Tablette
+01-03-2016 23:26:25.153 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=62,ip=78.125.88.233,category=Ordinateur,options=Core i5
+01-03-2016 23:26:25.154 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=63,ip=78.251.84.243,category=Mobile,brand=Apple
+01-03-2016 23:26:25.154 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=64,ip=62.23.215.100,email=client65@gmail.com,sex=M,brand=Apple,name=iPod Shuffle,model=iPod Shuffle - Vert - Disque 2Go,category=Baladeur,color=Vert,options=Disque 2Go,price=55.0
+01-03-2016 23:26:25.154 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=65,ip=85.17.156.11,category=Mobile
+01-03-2016 23:26:25.154 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=66,ip=92.135.181.173,category=Baladeur,brand=Apple,color=Blanc,options=Disque 160Go
+01-03-2016 23:26:25.154 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=67,ip=81.57.51.55,category=Ordinateur
+01-03-2016 23:26:25.155 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=68,ip=123.125.71.48,email=client69@gmail.com,sex=M,brand=Apple,name=Macbook Air,model=Macbook Air - Ecran 13 - Disque 256Go,category=Portable,options=Ecran 13|Disque 256Go,price=1299.0
+01-03-2016 23:26:25.155 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=69,ip=82.126.99.201,category=Baladeur,brand=Apple
+01-03-2016 23:26:25.155 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=70,ip=86.221.177.233,category=Ordinateur,options=Ecran 27|NVIDIA GeForce GT 755M
+01-03-2016 23:26:25.155 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=71,ip=80.10.159.198,category=Baladeur
+01-03-2016 23:26:25.155 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=72,ip=80.10.159.231,brand=Google,name=Nexus 7,model=Nexus 7 - Disque 32Go,category=Tablette,options=Disque 32Go,price=269.0
+01-03-2016 23:26:25.155 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=73,ip=78.250.209.114,category=Tablette
+01-03-2016 23:26:25.156 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=74,ip=178.19.141.88,category=Portable,options=Ecran 13|Core i5|Disque 128Go
+01-03-2016 23:26:25.156 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=75,ip=85.171.197.218,category=Tablette,brand=Apple
+01-03-2016 23:26:25.156 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=76,ip=82.67.212.205,email=client77@gmail.com,sex=M,brand=Apple,name=iPod Nano,model=iPod Nano - Rose - Disque 16Go,category=Baladeur,color=Rose,options=Disque 16Go,price=179.0
+01-03-2016 23:26:25.156 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=77,ip=66.130.99.148,category=Baladeur
+01-03-2016 23:26:25.156 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=78,ip=81.65.69.77,category=Baladeur,brand=Apple,color=Jaune,options=Disque 64Go
+01-03-2016 23:26:25.156 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=79,ip=163.116.6.10,category=Baladeur
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=80,ip=217.109.123.82,email=client81@gmail.com,sex=M,brand=Apple,name=iPhone 5C,model=iPhone 5C - Jaune - Disque 32Go,category=Mobile,color=Jaune,options=Disque 32Go,price=699.0
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=81,ip=80.15.220.251,category=Baladeur,brand=Apple
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=82,ip=78.223.176.115,email=client83@gmail.com,sex=M,brand=Apple,name=iPod Touch,model=iPod Touch - Noir - Disque 16Go,category=Baladeur,color=Noir,options=Disque 16Go,price=249.0
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=83,ip=213.41.248.250,category=Mobile
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=84,ip=46.218.250.142,brand=Apple,name=iPhone 5S,model=iPhone 5S - Argent - Disque 64Go,category=Mobile,color=Argent,options=Disque 64Go,price=899.0
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=85,ip=78.193.10.137,category=Portable
+01-03-2016 23:26:25.157 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=86,ip=77.242.202.237,category=Mobile,color=Argent,options=Disque 32Go
+01-03-2016 23:26:25.158 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=87,ip=82.239.107.163,category=Ordinateur,brand=Apple
+01-03-2016 23:26:25.158 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=88,ip=85.17.156.99,brand=Apple,name=iMac,model=iMac - Ecran 27 - NVIDIA GeForce GTX 755M,category=Ordinateur,options=Ecran 27|NVIDIA GeForce GTX 755M,price=1999.0
+01-03-2016 23:26:25.158 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=89,ip=92.90.17.5,category=Mobile
+01-03-2016 23:26:25.158 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=90,ip=80.215.40.231,email=client91@gmail.com,sex=F,brand=Apple,name=iPod Shuffle,model=iPod Shuffle - Vert - Disque 2Go,category=Baladeur,color=Vert,options=Disque 2Go,price=55.0
+01-03-2016 23:26:25.158 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=91,ip=82.126.60.84,category=Baladeur
+01-03-2016 23:26:25.159 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=92,ip=78.223.176.115,brand=Apple,name=iPhone 4S,model=iPhone 4S - Blanc - Disque 8Go,category=Mobile,color=Blanc,options=Disque 8Go,price=399.0
+01-03-2016 23:26:25.159 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=93,ip=62.160.254.158,category=Mobile,brand=Apple
+01-03-2016 23:26:25.159 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=94,ip=78.251.230.48,category=Baladeur,color=Product RED,options=Disque 64Go
+01-03-2016 23:26:25.159 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=95,ip=94.46.4.1,category=Tablette
+01-03-2016 23:26:25.159 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=96,ip=150.70.97.120,brand=Apple,name=iPod Touch,model=iPod Touch - Violet - Disque 64Go,category=Baladeur,color=Violet,options=Disque 64Go,price=449.0
+01-03-2016 23:26:25.159 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=97,ip=93.13.108.144,category=Tablette
+01-03-2016 23:26:25.160 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SellRequest - id=98,ip=88.175.89.162,email=client99@gmail.com,sex=M,brand=Apple,name=iPod Nano,model=iPod Nano - Gris sideral - Disque 16Go,category=Baladeur,color=Gris sideral,options=Disque 16Go,price=179.0
+01-03-2016 23:26:25.160 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=99,ip=83.137.242.22,category=Mobile,brand=Apple
+01-03-2016 23:26:25.160 [pool-1-thread-1] INFO com.github.vspiewak.loggenerator.SearchRequest - id=100,ip=62.160.254.248,brand=Apple,name=iPod Nano,model=iPod Nano - Product RED - Disque 16Go,category=Baladeur,color=Product RED,options=Disque 16Go,price=179.0
