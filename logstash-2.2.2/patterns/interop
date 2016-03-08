@@ -1,6 +1,44 @@
-INTEROP_APP %{TIMESTAMP_ISO8601:log_date}%{SPACE}%{LOGLEVEL:log_level}%{SPACE}%{NOTSPACE:session_id}%{SPACE}%{NOTSPACE:usercase}%{SPACE}%{NOTSPACE:classname}%{SPACE}%{GREEDYDATA:msg}
+DEFAULT %{TIMESTAMP_ISO8601:log_date}%{SPACE}%{LOGLEVEL:log_level}%{SPACE}%{NOTSPACE:session_id}%{SPACE}%{NOTSPACE:usercase}%{SPACE}%{NOTSPACE:classname}%{SPACE}%{GREEDYDATA:msg}
 
-INCOMING << INCOMING REQUEST %{NOTSPACE:request_type} %{NOTSPACE:request_action} %{GREEDYDATA:request_json}
-OUTGOING >> OUTGOING RESPONSE %{GREEDYDATA:request_json}
+DATE2 %{YEAR}/%{MONTHNUM}/%{MONTHDAY} %{NUMBER}:%{NUMBER}:%{NUMBER}
 
-USSD_VERIFY (%{INCOMING}|%{OUTGOING})
+#===INCOMING===
+#UssdController
+INCOMING_UC INCOMING REQUEST %{NOTSPACE:request_type} %{NOTSPACE:request_action} %{GREEDYDATA:request_json}
+#VerifyService
+INCOMING_VS incoming response from %{WORD:hostname} %{WORD:mmi} %{GREEDYDATA:request_json}
+#Utils
+INCOMING_U INCOMING RESPONSE %{GREEDYDATA:paramToParse}
+#All
+INCOMING (%{INCOMING_UC}|%{INCOMING_VS}|%{INCOMING_U})
+#=============
+
+#===OUTGOING===
+#UssdController
+OUTGOING_UC OUTGOING RESPONSE %{GREEDYDATA:request_json}
+#Utils
+OUTGOING_U OUTGOING REQUEST %{URI:outgoing_url}
+#All
+OUTGOING (%{OUTGOING_UC}|%{OUTGOING_U})
+#=============
+
+#MMO
+MMO_MESSAGE (Customer invalid  %{NOTSPACE:customer_invalid})?%{GREEDYDATA}? 
+#(Customer PIN invalid x 1 %{NOTSPACE:customer_invalid})?%{GREEDYDATA}?
+MMO_INFO MMO %{WORD:mmo_action}: %{MMO_MESSAGE:mmo_message}
+
+#SMS
+SMS_TRANSFER_SENT SMS to=%{NUMBER:phone_number}%{GREEDYDATA}%{NUMBER:transfer} %{WORD:sender} vers %{WORD:recipient} \(%{NUMBER:recipient_id}\)%{GREEDYDATA}%{NUMBER:bank_balance}%{DATA}:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
+
+SMS_TRANSFERT_RECEIVE SMS to=%{NUMBER:phone_number}%{DATA}text=%{DATA}%{NUMBER:receipt}%{DATA}%{NUMBER:sender_id}%{DATA}.%{DATA}%{NUMBER:bank_balance}%{GREEDYDATA}Id:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
+
+SMS_ONGOING SMS to=%{NUMBER:phone_number}%{GREEDYDATA}le%{SPACE}%{NUMBER:recipient_id}%{GREEDYDATA}Id:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
+SMS (%{SMS_TRANSFER_SENT}|%{SMS_TRANSFERT_RECEIVE}|%{SMS_ONGOING})
+
+
+
+
+
+
+INTEROP (%{SMS}|%{INCOMING:incoming}|%{OUTGOING:outgoing}|%{MMO_INFO:mmo_info})
+  
