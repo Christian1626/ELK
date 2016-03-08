@@ -24,51 +24,51 @@ webpackJsonp([1],{
 
 	'use strict';
 
-	__webpack_require__(1);
-	__webpack_require__(1062);
-	__webpack_require__(891);
-	__webpack_require__(892);
-	__webpack_require__(893);
-	__webpack_require__(894);
-	__webpack_require__(895);
-	__webpack_require__(896);
-	__webpack_require__(897);
-	__webpack_require__(898);
-	__webpack_require__(899);
-	__webpack_require__(900);
-	__webpack_require__(901);
-	__webpack_require__(902);
-	__webpack_require__(903);
-	__webpack_require__(904);
-	__webpack_require__(905);
-	__webpack_require__(906);
-	__webpack_require__(891);
-	__webpack_require__(907);
-	__webpack_require__(908);
-	__webpack_require__(1);
+	__webpack_require__(1070);
+	__webpack_require__(1766);
+	__webpack_require__(1597);
+	__webpack_require__(1598);
+	__webpack_require__(1599);
+	__webpack_require__(1600);
+	__webpack_require__(1601);
+	__webpack_require__(1602);
+	__webpack_require__(1603);
+	__webpack_require__(1604);
+	__webpack_require__(1605);
+	__webpack_require__(1606);
+	__webpack_require__(1607);
+	__webpack_require__(1608);
+	__webpack_require__(1609);
+	__webpack_require__(1610);
+	__webpack_require__(1611);
+	__webpack_require__(1612);
+	__webpack_require__(1597);
+	__webpack_require__(1613);
+	__webpack_require__(1614);
+	__webpack_require__(1070);
 	__webpack_require__(212);
-	__webpack_require__(1).bootstrap();
+	__webpack_require__(1070).bootstrap();
 	/* xoxo */
 
 /***/ },
 
-/***/ 1062:
+/***/ 1766:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var $ = __webpack_require__(208);
 	var _ = __webpack_require__(194);
-	var notify = __webpack_require__(322);
+	var notify = __webpack_require__(1122);
 
-	__webpack_require__(1063);
-	__webpack_require__(1068);
+	__webpack_require__(1767);
+	__webpack_require__(1772);
 
-	var chrome = __webpack_require__(1).setTabs([{
+	var chrome = __webpack_require__(1070).setTabs([{
 	  id: '',
 	  title: 'Server Status',
 	  activeIndicatorColor: '#EFF0F2'
-	}]).setRootTemplate(__webpack_require__(1069)).setRootController('ui', function ($http, $scope) {
+	}]).setRootTemplate(__webpack_require__(1773)).setRootController('ui', function ($http, $scope) {
 	  var ui = this;
 	  ui.loading = false;
 
@@ -106,7 +106,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 1063:
+/***/ 1767:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -115,9 +115,9 @@ webpackJsonp([1],{
 	var moment = __webpack_require__(243);
 	var numeral = __webpack_require__(947);
 
-	var toTitleCase = __webpack_require__(1064);
-	var formatNumber = __webpack_require__(1065);
-	var readStatData = __webpack_require__(1066);
+	var toTitleCase = __webpack_require__(1768);
+	var formatNumber = __webpack_require__(1769);
+	var readStatData = __webpack_require__(1770);
 
 	function calcAvg(metricList, metricNumberType) {
 	  return metricList.map(function (data) {
@@ -128,10 +128,10 @@ webpackJsonp([1],{
 	  });
 	}
 
-	__webpack_require__(215).get('kibana', []).directive('statusPageMetric', function () {
+	__webpack_require__(1078).get('kibana', []).directive('statusPageMetric', function () {
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(1067),
+	    template: __webpack_require__(1771),
 	    scope: {
 	      name: '@',
 	      data: '='
@@ -185,7 +185,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 1064:
+/***/ 1768:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -202,7 +202,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 1065:
+/***/ 1769:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -228,7 +228,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 1066:
+/***/ 1770:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -275,21 +275,21 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 1067:
+/***/ 1771:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"status_metric_wrapper col-md-4\">\n  <div class=\"content\">\n    <h3 class=\"title\">{{metric.extendedTitle}}</h3>\n    <h4 class=\"average\">{{ metric.averages.join(', ') }}</h4>\n  </div>\n</div>\n"
 
 /***/ },
 
-/***/ 1068:
+/***/ 1772:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 1069:
+/***/ 1773:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container state_default state_{{ui.serverState}}\">\n  <header>\n    <h1>\n      Status: <span class=\"state_color\">{{ ui.serverStateMessage }}</span>\n      <i class=\"fa state_color state_icon\" />\n    </h1>\n  </header>\n\n  <div class=\"row metrics_wrapper\">\n    <div ng-repeat=\"(name, data) in ui.metrics\">\n      <status-page-metric name=\"{{name}}\" data=\"data\"></status-page-metric>\n    </div>\n  </div>\n\n  <div class=\"row plugin_status_wrapper\">\n    <h3>Installed Plugins</h3>\n    <div ng-if=\"!ui.statuses && ui.loading\" class=\"loading_statuses\">\n      <span class=\"spinner\"></span>\n    </div>\n\n    <h4 ng-if=\"!ui.statuses && !ui.loading\" class=\"missing_statuses\">\n      No plugin status information available\n    </h4>\n\n    <table class=\"plugin_status_breakdown row\" ng-if=\"ui.statuses\">\n      <tr>\n        <th class=\"col-xs-1\">Name</th>\n        <th class=\"col-xs-11\">Status</th>\n      </tr>\n      <tr ng-repeat=\"status in ui.statuses\" class=\"status_row plugin_state_default plugin_state_{{status.state}}\">\n        <td class=\"col-xs-1 status_name\">{{status.name}}</td>\n        <td class=\"col-xs-11 status_message\">\n          <i class=\"fa plugin_state_color plugin_state_icon\" />\n          {{status.message}}\n        </td>\n      </tr>\n    </table>\n  </div>\n</div>\n"

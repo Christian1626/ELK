@@ -2,7 +2,7 @@
 # server.port: 5601
 
 # The host to bind the server to.
-server.host: "localhost"
+server.host: "127.0.0.1"
 
 # If you are running kibana behind a proxy, and want to mount it at a path,
 # specify that path here. The basePath can't end in a slash.
@@ -12,7 +12,7 @@ server.host: "localhost"
 # server.maxPayloadBytes: 1048576
 
 # The Elasticsearch instance to use for all your queries.
-# elasticsearch.url: "http://localhost:9200"
+#elasticsearch.url: "http://localhost:9200"
 
 # preserve_elasticsearch_host true will send the hostname specified in `elasticsearch`. If you set it to false,
 # then the host you use to connect to *this* Kibana instance will be sent.
@@ -31,10 +31,12 @@ server.host: "localhost"
 # the Kibana server)
 # elasticsearch.username: "user"
 # elasticsearch.password: "pass"
+elasticsearch.username: admin_kibana
+elasticsearch.password: admin_kibana
 
 # SSL for outgoing requests from the Kibana Server to the browser (PEM formatted)
-# server.ssl.cert: /path/to/your/server.crt
-# server.ssl.key: /path/to/your/server.key
+#server.ssl.cert: /etc/apache2/sites-available/ELK/kibana.crt
+#server.ssl.key: /etc/apache2/sites-available/ELK/kibana.key
 
 # Optional setting to validate that your Elasticsearch backend uses the same key files (PEM formatted)
 # elasticsearch.ssl.cert: /path/to/your/client.crt
@@ -77,3 +79,7 @@ server.host: "localhost"
 
 # Set this to true to log all events, including system usage information and all requests.
 # logging.verbose: false
+
+#encryption key.
+shield.encryptionKey: "orange_shield_encryptionKey"
+shield.sessionTimeout: 600000
