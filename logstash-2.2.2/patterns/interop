@@ -1,44 +1,64 @@
-DEFAULT %{TIMESTAMP_ISO8601:log_date}%{SPACE}%{LOGLEVEL:log_level}%{SPACE}%{NOTSPACE:session_id}%{SPACE}%{NOTSPACE:usercase}%{SPACE}%{NOTSPACE:classname}%{SPACE}%{GREEDYDATA:msg}
-
 DATE2 %{YEAR}/%{MONTHNUM}/%{MONTHDAY} %{NUMBER}:%{NUMBER}:%{NUMBER}
+JSON {(%{QUOTEDSTRING}:%{GREEDYDATA}(,)?)*}
+PARAMEQUAL %{SPACE}%{GREEDYDATA}%{SPACE}=%{SPACE}%{GREEDYDATA}%{SPACE}(,)?
+TIMEOUT (Timeout|timeout)
+
+
+DEFAULT %{TIMESTAMP_ISO8601:log_date}%{SPACE}%{LOGLEVEL:log_level}%{SPACE}%{NOTSPACE:session_id}%{SPACE}%{NOTSPACE:usecase}%{SPACE}%{NOTSPACE:classname}%{SPACE}%{GREEDYDATA:msg}
 
 #===INCOMING===
-#UssdController
-INCOMING_UC INCOMING REQUEST %{NOTSPACE:request_type} %{NOTSPACE:request_action} %{GREEDYDATA:request_json}
+#UssdController & MminInteropControler
+INCOMING_UC_M INCOMING REQUEST %{NOTSPACE:request_type} %{NOTSPACE:service_type}%{SPACE}%{JSON:[@metadata][request_json]}
 #VerifyService
-INCOMING_VS incoming response from %{WORD:hostname} %{WORD:mmi} %{GREEDYDATA:request_json}
+INCOMING_VS incoming response from %{WORD:MMO} %{WORD:service_type}%{SPACE}%{JSON:[@metadata][request_json]}
 #Utils
-INCOMING_U INCOMING RESPONSE %{GREEDYDATA:paramToParse}
+INCOMING_U INCOMING RESPONSE %{PARAMEQUAL:[@metadata][paramToParse]}
+#Transfer Service
+INCOMING_TS INCOMING RESPONSE from %{WORD:MMO} %{WORD:service_type}%{SPACE}%{JSON:[@metadata][request_json]}
 #All
-INCOMING (%{INCOMING_UC}|%{INCOMING_VS}|%{INCOMING_U})
+INCOMING (%{INCOMING_UC_M:[@metadata][incoming_uc_m]}|%{INCOMING_VS:[@metadata][incoming_vs]}|%{INCOMING_U:[@metadata][incoming_u]}|%{INCOMING_TS:[@metadata][incoming_ts]})
 #=============
 
 #===OUTGOING===
 #UssdController
-OUTGOING_UC OUTGOING RESPONSE %{GREEDYDATA:request_json}
+OUTGOING_UC OUTGOING RESPONSE%{SPACE}%{JSON:[@metadata][request_json]}
+#VerifyService
+OUTGOING_VS outgoing request to %{WORD:MMO} %{WORD:service_type}%{SPACE}%{JSON:[@metadata][request_json]}
 #Utils
-OUTGOING_U OUTGOING REQUEST %{URI:outgoing_url}
+OUTGOING_U OUTGOING REQUEST( to %{WORD:MMO})? %{URI:request}
+#MminInteropControler
+OUTGOING_M OUTGOING RESPONSE %{NOTSPACE:request_type} %{NOTSPACE:service_type}%{SPACE}%{JSON:[@metadata][request_json]}
+#Transfer Service
+OUTGOING_TS OUTGOING REQUEST to %{WORD:MMO} %{WORD:service_type}%{SPACE}%{JSON:[@metadata][request_json]}
+
 #All
-OUTGOING (%{OUTGOING_UC}|%{OUTGOING_U})
+OUTGOING >> (%{OUTGOING_UC:[@metadata][outgoing_uc]}|%{OUTGOING_U:[@metadata][outgoing_u]}|%{OUTGOING_VS:[@metadata][outgoing_vs]}|%{OUTGOING_M:[@metadata][outgoing_m]}|%{OUTGOING_TS:[@metadata][outgoing_ts]})
 #=============
 
 #MMO
-MMO_MESSAGE (Customer invalid  %{NOTSPACE:customer_invalid})?%{GREEDYDATA}? 
+MMO_CI Customer invalid  %{NOTSPACE:customer_invalid}
+MMO_V Verify no response %{WORD:mmo_error}%{GREEDYDATA}invoking %{WORD:partner}%{GREEDYDATA}received\(.?\)
+MMO_TIMEOUT %{GREEDYDATA}%{TIMEOUT:mmo_error}%{GREEDYDATA}requesting %{WORD:MMO}%{GREEDYDATA}invoking %{WORD:partner}
+# MMO_MESSAGE (%{MMO_CI}|%{MMO_V}|%{MMO_TIMEOUT})?%{GREEDYDATA}? 
+MMO_MESSAGE (%{MMO_TIMEOUT}|%{MMO_CI}|%{MMO_V}|%{GREEDYDATA})
+
 #(Customer PIN invalid x 1 %{NOTSPACE:customer_invalid})?%{GREEDYDATA}?
-MMO_INFO MMO %{WORD:mmo_action}: %{MMO_MESSAGE:mmo_message}
+MMO_INFO %{GREEDYDATA}?MMO %{WORD:mmo_action}: %{MMO_MESSAGE:mmo_message} 
+
+#Task
+TASK processing request for %{GREEDYDATA} %{JSON:[@metadata][request_json]}
 
 #SMS
-SMS_TRANSFER_SENT SMS to=%{NUMBER:phone_number}%{GREEDYDATA}%{NUMBER:transfer} %{WORD:sender} vers %{WORD:recipient} \(%{NUMBER:recipient_id}\)%{GREEDYDATA}%{NUMBER:bank_balance}%{DATA}:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
+# SMS_TRANSFER_SENT SMS to=%{NUMBER:phone_number}%{GREEDYDATA}%{NUMBER:transfer} %{WORD:currency} vers %{WORD:recipient}( %{WORD})? \(%{NUMBER:recipient_id}\)%{GREEDYDATA}%{NUMBER:balance}%{DATA}:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
 
-SMS_TRANSFERT_RECEIVE SMS to=%{NUMBER:phone_number}%{DATA}text=%{DATA}%{NUMBER:receipt}%{DATA}%{NUMBER:sender_id}%{DATA}.%{DATA}%{NUMBER:bank_balance}%{GREEDYDATA}Id:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
+# SMS_TRANSFERT_RECEIVED SMS to=%{NUMBER:phone_number}%{DATA}text=%{DATA}%{NUMBER:transaction_Amount}%{DATA}%{NUMBER:sender_id}%{DATA}.%{DATA}%{NUMBER:balance}%{GREEDYDATA}Id:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
 
-SMS_ONGOING SMS to=%{NUMBER:phone_number}%{GREEDYDATA}le%{SPACE}%{NUMBER:recipient_id}%{GREEDYDATA}Id:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
-SMS (%{SMS_TRANSFER_SENT}|%{SMS_TRANSFERT_RECEIVE}|%{SMS_ONGOING})
-
-
+# SMS_ONGOING SMS to=%{NUMBER:phone_number}%{GREEDYDATA}le%{SPACE}%{NUMBER:recipient_id}%{GREEDYDATA}Id:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
+SMS to=%{NUMBER:num}%{GREEDYDATA}text=%{GREEDYDATA:sms_text}
 
 
 
 
-INTEROP (%{SMS}|%{INCOMING:incoming}|%{OUTGOING:outgoing}|%{MMO_INFO:mmo_info})
+
+INTEROP (%{SMS}|%{INCOMING}|%{OUTGOING}|%{MMO_INFO}|%{TASK})
   

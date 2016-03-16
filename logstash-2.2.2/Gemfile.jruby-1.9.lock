@@ -201,6 +201,13 @@ GEM
       logstash-core (>= 2.0.0.beta2, < 3.0.0)
     logstash-filter-drop (2.0.2)
       logstash-core (>= 2.0.0.beta2, < 3.0.0)
+    logstash-filter-elasticsearch (2.0.2)
+      elasticsearch
+      logstash-core (>= 2.0.0.beta2, < 3.0.0)
+    logstash-filter-environment (2.0.3)
+      logstash-core (>= 2.0.0.beta2, < 3.0.0)
+    logstash-filter-extractnumbers (2.0.2)
+      logstash-core (>= 2.0.0.beta2, < 3.0.0)
     logstash-filter-fingerprint (2.0.3)
       logstash-core (>= 2.0.0.beta2, < 3.0.0)
       murmurhash3
@@ -681,6 +688,9 @@ DEPENDENCIES
   logstash-filter-date
   logstash-filter-dns
   logstash-filter-drop
+  logstash-filter-elasticsearch
+  logstash-filter-environment
+  logstash-filter-extractnumbers
   logstash-filter-fingerprint
   logstash-filter-geoip
   logstash-filter-grok
