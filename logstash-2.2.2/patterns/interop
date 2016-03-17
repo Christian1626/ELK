@@ -2,6 +2,7 @@ DATE2 %{YEAR}/%{MONTHNUM}/%{MONTHDAY} %{NUMBER}:%{NUMBER}:%{NUMBER}
 JSON {(%{QUOTEDSTRING}:%{GREEDYDATA}(,)?)*}
 PARAMEQUAL %{SPACE}%{GREEDYDATA}%{SPACE}=%{SPACE}%{GREEDYDATA}%{SPACE}(,)?
 TIMEOUT (Timeout|timeout)
+TASK (Task)
 
 
 DEFAULT %{TIMESTAMP_ISO8601:log_date}%{SPACE}%{LOGLEVEL:log_level}%{SPACE}%{NOTSPACE:session_id}%{SPACE}%{NOTSPACE:usecase}%{SPACE}%{NOTSPACE:classname}%{SPACE}%{GREEDYDATA:msg}
@@ -46,7 +47,7 @@ MMO_MESSAGE (%{MMO_TIMEOUT}|%{MMO_CI}|%{MMO_V}|%{GREEDYDATA})
 MMO_INFO %{GREEDYDATA}?MMO %{WORD:mmo_action}: %{MMO_MESSAGE:mmo_message} 
 
 #Task
-TASK processing request for %{GREEDYDATA} %{JSON:[@metadata][request_json]}
+TASK processing request for %{GREEDYDATA}%{JSON:[@metadata][request_json]}
 
 #SMS
 # SMS_TRANSFER_SENT SMS to=%{NUMBER:phone_number}%{GREEDYDATA}%{NUMBER:transfer} %{WORD:currency} vers %{WORD:recipient}( %{WORD})? \(%{NUMBER:recipient_id}\)%{GREEDYDATA}%{NUMBER:balance}%{DATA}:%{GREEDYDATA:trans_id}. Date : %{DATE2:date_sms}
