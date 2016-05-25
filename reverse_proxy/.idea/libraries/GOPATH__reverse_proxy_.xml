@@ -1,0 +1,52 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;reverse_proxy&gt;">
+    <CLASSES>
+      <root url="file://$USER_HOME$/go/src/internal" />
+      <root url="file://$USER_HOME$/go/src/bufio" />
+      <root url="file://$USER_HOME$/go/src/flag" />
+      <root url="file://$USER_HOME$/go/src/expvar" />
+      <root url="file://$USER_HOME$/go/src/log" />
+      <root url="file://$USER_HOME$/go/src/unsafe" />
+      <root url="file://$USER_HOME$/go/src/database" />
+      <root url="file://$USER_HOME$/go/src/strings" />
+      <root url="file://$USER_HOME$/go/src/vendor" />
+      <root url="file://$USER_HOME$/go/src/debug" />
+      <root url="file://$USER_HOME$/go/src/os" />
+      <root url="file://$USER_HOME$/go/src/builtin" />
+      <root url="file://$USER_HOME$/go/src/go" />
+      <root url="file://$USER_HOME$/go/src/runtime" />
+      <root url="file://$USER_HOME$/go/src/bytes" />
+      <root url="file://$USER_HOME$/go/src/time" />
+      <root url="file://$USER_HOME$/go/src/container" />
+      <root url="file://$USER_HOME$/go/src/mime" />
+      <root url="file://$USER_HOME$/go/src/fmt" />
+      <root url="file://$USER_HOME$/go/src/path" />
+      <root url="file://$USER_HOME$/go/src/reflect" />
+      <root url="file://$USER_HOME$/go/src/html" />
+      <root url="file://$USER_HOME$/go/src/text" />
+      <root url="file://$USER_HOME$/go/src/net" />
+      <root url="file://$USER_HOME$/go/src/image" />
+      <root url="file://$USER_HOME$/go/src/compress" />
+      <root url="file://$USER_HOME$/go/src/io" />
+      <root url="file://$USER_HOME$/go/src/testing" />
+      <root url="file://$USER_HOME$/go/src/index" />
+      <root url="file://$USER_HOME$/go/src/archive" />
+      <root url="file://$USER_HOME$/go/src/sort" />
+      <root url="file://$USER_HOME$/go/src/encoding" />
+      <root url="file://$USER_HOME$/go/src/sync" />
+      <root url="file://$USER_HOME$/go/src/crypto" />
+      <root url="file://$USER_HOME$/go/src/strconv" />
+      <root url="file://$USER_HOME$/go/src/unicode" />
+      <root url="file://$USER_HOME$/go/src/math" />
+      <root url="file://$USER_HOME$/go/src/cmd" />
+      <root url="file://$USER_HOME$/go/src/hash" />
+      <root url="file://$USER_HOME$/go/src/errors" />
+      <root url="file://$USER_HOME$/go/src/syscall" />
+      <root url="file://$USER_HOME$/go/src/regexp" />
+    </CLASSES>
+    <SOURCES />
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>

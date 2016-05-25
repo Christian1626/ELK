@@ -1,0 +1,6 @@
+VAR \[%{DATA}\]:%{SPACE}%{TEST}
+TEST ([a-zA-Z0-9._-]( |:)?)+
+INBRACKET \[%{DATA}\]
+TOPARSE %{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?%{VAR:var}?
+
+TANGO_LOG %{SYSLOGTIMESTAMP:timestamp}%{SPACE}%{NOTSPACE:fullhost}%{SPACE}%{INBRACKET:country}%{SPACE}%{INBRACKET:host}%{SPACE}%{NOTSPACE:log_name}%{SPACE}:%{SPACE}%{TOPARSE}

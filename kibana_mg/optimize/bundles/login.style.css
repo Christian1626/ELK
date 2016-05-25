@@ -1,0 +1,58 @@
+.content {
+  background: #222222;
+}
+.inner-addon {
+  position: relative;
+}
+.inner-addon .fa {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  color: #aaaaaa;
+}
+.left-addon .fa {
+  left: 0px;
+}
+.right-addon .fa {
+  right: 0px;
+}
+.left-addon input {
+  padding-left: 30px !important;
+}
+.right-addon input {
+  padding-right: 30px !important;
+}
+.container {
+  width: 350px;
+  margin: auto;
+  text-align: center;
+}
+.container h1,
+.container button {
+  margin: 1em;
+}
+.login {
+  background-color: #94c63d;
+  color: white;
+  width: 200px;
+  font-size: 1.5em;
+  border: none;
+}
+.login:disabled {
+  background-color: #4b661e;
+  color: #95a5a6;
+}
+input.form-control {
+  border: none;
+  font-size: 1.25em;
+  height: auto;
+  padding: 0.5em;
+}
+#login-form {
+  position: relative;
+}
+#login-form .form-group.has-error {
+  position: absolute;
+  left: 335px;
+  text-align: left;
+}

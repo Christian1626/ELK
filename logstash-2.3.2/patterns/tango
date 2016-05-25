@@ -1,0 +1,3 @@
+INBRACKET \[%{DATA}\]
+
+TANGO_LOG %{SYSLOGTIMESTAMP:timestamp}%{SPACE}%{NOTSPACE:fullhost}%{SPACE}%{INBRACKET:country}%{SPACE}%{INBRACKET:host}%{SPACE}%{NOTSPACE:log_name}%{SPACE}:%{GREEDYDATA:toparse}

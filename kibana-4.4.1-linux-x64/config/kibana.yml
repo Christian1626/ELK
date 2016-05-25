@@ -2,7 +2,7 @@
 # server.port: 5601
 
 # The host to bind the server to.
-server.host: "10.193.199.170"
+server.host: "10.193.199.171"
 
 # If you are running kibana behind a proxy, and want to mount it at a path,
 # specify that path here. The basePath can't end in a slash.
@@ -12,7 +12,7 @@ server.host: "10.193.199.170"
 # server.maxPayloadBytes: 1048576
 
 # The Elasticsearch instance to use for all your queries.
-elasticsearch.url: "http://10.193.199.170:9200"
+elasticsearch.url: "http://10.193.199.171:9200"
 
 # preserve_elasticsearch_host true will send the hostname specified in `elasticsearch`. If you set it to false,
 # then the host you use to connect to *this* Kibana instance will be sent.
@@ -20,7 +20,7 @@ elasticsearch.url: "http://10.193.199.170:9200"
 
 # Kibana uses an index in Elasticsearch to store saved searches, visualizations
 # and dashboards. It will create a new index if it doesn't already exist.
-# kibana.index: ".kibana"
+#kibana.index: ".kibana"
 
 # The default application to load.
 # kibana.defaultAppId: "discover"
@@ -29,10 +29,10 @@ elasticsearch.url: "http://10.193.199.170:9200"
 # used by the Kibana server to perform maintenance on the kibana_index at startup. Your Kibana
 # users will still need to authenticate with Elasticsearch (which is proxied through
 # the Kibana server)
-# elasticsearch.username: "user"
-# elasticsearch.password: "pass"
-elasticsearch.username: admin_kibana
-elasticsearch.password: admin_kibana
+elasticsearch.username: "superadmin"
+elasticsearch.password: "superadmin"
+# elasticsearch.username: admin_kibana
+# elasticsearch.password: admin_kibana
 
 # SSL for outgoing requests from the Kibana Server to the browser (PEM formatted)
 #server.ssl.cert: /etc/apache2/sites-available/ELK/kibana.crt
@@ -80,6 +80,3 @@ elasticsearch.password: admin_kibana
 # Set this to true to log all events, including system usage information and all requests.
 # logging.verbose: false
 
-#encryption key.
-shield.encryptionKey: "orange_shield_encryptionKey"
-shield.sessionTimeout: 600000

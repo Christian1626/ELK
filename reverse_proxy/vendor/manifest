@@ -1,0 +1,11 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/andelf/go-curl",
+			"repository": "https://github.com/andelf/go-curl",
+			"revision": "024d27d08d965038c961eb4ebba987da038ed65a",
+			"branch": "master"
+		}
+	]
+}

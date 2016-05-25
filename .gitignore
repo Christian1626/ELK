@@ -1,4 +1,7 @@
 elasticsearch-2.2.0/
+elasticsearch-2.3.2/
+elasticsearch-2.2.0/data/elasticsearch/
+elasticsearch-2.3.2/data/elasticsearch/
 logs-interop/
 error
 res

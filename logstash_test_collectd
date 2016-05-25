@@ -1,0 +1,22 @@
+input {
+  udp {
+    port => 25826
+    buffer_size => 1452
+    codec => collectd { }
+  }
+}
+
+output {
+    stdout {
+        codec => rubydebug {
+            metadata => true
+        }
+    } 
+
+    elasticsearch {
+        hosts => "10.193.199.170"
+        index => "logstash-test-collectd"
+        user => "admin_orange"
+        password => "admin_orange"
+    }
+} 

@@ -1,0 +1,9 @@
+[
+  {
+    "_id": "Transaction-canal-status",
+    "_type": "visualization",
+    "_source": {
+      "panelsJSON": "[\n  {\n    \"col\": 9,\n    \"id\": \"Number-of-Transactions\",\n    \"panelIndex\": 3]"
+    }
+  }
+]

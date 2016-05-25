@@ -12,7 +12,7 @@ filebeat:
       # For each file found under this path, a harvester is started.
       # Make sure not file is defined twice as this can lead to unexpected behaviour.
       paths:
-        - /var/log/oma-canalv2/*.log
+        - /var/log/oma-canalv2/oma-canalv2-app.log
         #- c:\programdata\elasticsearch\logs\*
 
       # Configure the file encoding for reading files with international characters
@@ -277,7 +277,7 @@ output:
   ### Logstash as output
   logstash:
     # The Logstash hosts
-    hosts: ["10.193.199.170:5044"]
+    hosts: ["10.193.199.171:5044"]
 
     # Number of workers per Logstash host.
     #worker: 1
