@@ -1,0 +1,225 @@
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please see the documentation for further information on configuration options:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html>
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+# cluster.name: my-application
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+# node.name: node-1
+#
+# Add custom attributes to the node:
+#
+# node.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+# path.data: /path/to/data
+#
+# Path to log files:
+#
+# path.logs: /path/to/logs
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+# bootstrap.mlockall: true
+#
+# Make sure that the `ES_HEAP_SIZE` environment variable is set to about half the memory
+# available on the system and that the owner of the process is allowed to use this limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+http.host: 10.193.199.171
+network.host: 10.193.199.171
+#
+# Set a custom port for HTTP:
+#
+http.port: 9200
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when new node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+# discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+#
+# Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
+#
+# discovery.zen.minimum_master_nodes: 3
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery.html>
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+# gateway.recover_after_nodes: 3
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html>
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Disable starting multiple nodes on a single system:
+#
+# node.max_local_storage_nodes: 1
+#
+# Require explicit names when deleting indices:
+#
+# action.destructive_requires_name: true
+
+# readonlyrest:
+#     enable: true
+#     response_if_req_forbidden: Forbidden by ReadonlyREST ES plugin
+#     access_control_rules:
+
+#     - name: "Logstash can write and create its own indices"
+#       auth_key: logstash:logstash
+#       type: allow
+#       actions: ["indices:data/read/*","indices:data/write/*","indices:admin/template/*","indices:admin/create"]
+#       indices: ["logstash-*", "<no_index>"]
+
+#     - name: Kibana Server (we trust this server side component, full access granted via HTTP authentication)
+#       auth_key: superadmin:superadmin
+#       type: allow
+
+#     - name: Developer (reads only logstash indices, but can create new charts/dashboards)
+#       auth_key: dev:dev
+#       type: allow
+#       kibana_access: ro+
+#       indices: ["<no-index>", ".kibana*", "logstash*", "default"]
+
+# http.cors.enabled: true
+# http.cors.allow-origin: /https?:\/\/localhost(:[0-9]+)?/
+
+readonlyrest:
+    enable: true
+    response_if_req_forbidden: Forbidden by ReadonlyREST ES plugin
+    access_control_rules:
+
+    - name: "Logstash can write and create its own indices"
+      auth_key: admin_logstash:admin_logstash
+      type: allow
+      actions: ["indices:data/read/*","indices:data/write/*","indices:admin/template/*","indices:admin/create"]
+      indices: ["logstash-*", "<no_index>"]
+
+    - name: Kibana Server (we trust this server side component, full access granted via HTTP authentication)
+      auth_key: admin_kibana:admin_kibana
+      kibana_access: ro+
+      type: allow
+
+    - name: Madagascar (reads only logstash indices, but can create new charts/dashboards)
+      auth_key: admin_mg:admin_mg
+      kibana_access: ro+
+      type: allow
+      indices: ["<no-index>", ".kibana*", "logstash-canalv2-mg","default"]
+
+    - name: Full access
+      auth_key: superadmin:superadmin
+      type: allow
+
+    - name: Allow Basic auth
+      type: allow
+      methods: [OPTIONS,GET]
+      auth_key: secret
+
+
+      ###############################################################
+      #                           Mali
+      ###############################################################
+    - name: Mali(Admin)
+      auth_key: admin_ml:admin_ml
+      kibana_access: rw
+      type: allow
+      indices: ["<no-index>", ".kibana_ml", "logstash-canalv2-ml","default"]
+      kibana_index: .kibana_ml
+
+    - name: Mali(Manager)
+      auth_key: manager_ml:manager_ml
+      kibana_access: ro+
+      type: allow
+      indices: ["<no-index>", ".kibana_ml", "logstash-canalv2-ml","default"]
+      kibana_index: .kibana_ml
+
+    - name: Mali(Partner)
+      auth_key: partner_ml:partner_ml
+      kibana_access: ro
+      type: allow
+      indices: ["<no-index>", ".kibana_ml", "logstash-canalv2-ml","default"]
+      kibana_index: .kibana_ml
+
+      ###############################################################
+      #                           Madagascar
+      ###############################################################
+    - name: Madagascar(Admin)
+      auth_key: admin_mg:admin_mg
+      type: allow
+      indices: ["<no-index>", ".kibana_mg", "logstash-canalv2-mg","default"]
+      kibana_index: .kibana_mg
+
+    - name: Madagascar(Manager)
+      auth_key: manager_mg:Vn4PujunDxv3Nb4dnTH5T6pjvDt9qc4xbx8YVrG467tmedMV8XXdxAtWrJSEqeyv
+      kibana_access: ro+
+      type: allow
+      indices: ["<no-index>", ".kibana_mg", "logstash-canalv2-mg","default"]
+      kibana_index: .kibana_mg
+
+    - name: Madagascar(Partner)
+      auth_key: partner_mg:rMx4Wu39zFV5PpA6PNmzDYQwdmBrMcrcxWmGd3f4XYSsDwNXFWxuMgLa7A7nNzg2
+      kibana_access: ro
+      type: allow
+      indices: ["<no-index>", ".kibana_mg", "logstash-canalv2-mg","default"]
+      kibana_index: .kibana_mg
+
+      ###############################################################
+      #                           Cote d'ivoire
+      ###############################################################
+    - name: Cote d'Ivoire(Admin)
+      auth_key: admin_ci:admin_ci
+      kibana_access: rw
+      type: allow
+      indices: ["<no-index>", ".kibana_ci", "logstash-canalv2-ci","default"]
+      kibana_index: .kibana_ci
+
+    - name: Cote d'Ivoire(Manager)
+      auth_key: manager_ci:manager_ci
+      kibana_access: ro+
+      type: allow
+      indices: ["<no-index>", ".kibana_ci", "logstash-canalv2-ci","default"]
+      kibana_index: .kibana_ci
+
+    - name: Cote d'Ivoire(Partner)
+      auth_key: partner_ci:partner_ci
+      kibana_access: ro
+      type: allow
+      indices: ["<no-index>", ".kibana_ci", "logstash-canalv2-ci","default"]
+      kibana_index: .kibana_ci
+
+
+
