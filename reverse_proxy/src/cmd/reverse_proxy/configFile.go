@@ -1,6 +1,5 @@
 package main
 
-//
 //import (
 //	"log"
 //
@@ -13,16 +12,11 @@ package main
 //	Country    string
 //	DecryptKey string
 //	Signature  string
-//	Admin      admin
-//	Partner    partner
+//	Roles      map[string]roles
 //}
 //
-//type admin struct {
-//	Username string
-//	Password string
-//}
-//
-//type partner struct {
+//type roles struct {
+//	Id       int
 //	Username string
 //	Password string
 //}
@@ -39,10 +33,9 @@ package main
 //	log.Println("            addr ==>", config.Addr)
 //	log.Println("      decryptKey ==>", config.DecryptKey)
 //	log.Println("       signature ==>", config.Signature)
-//	log.Println("  Admin username ==>", config.Admin.Username)
-//	log.Println("        Admin pw ==>", config.Admin.Password)
-//	log.Println("Partner username ==>", config.Partner.Username)
-//	log.Println("      Partner pw ==>", config.Partner.Password)
+//	log.Println("  Admin username ==>", config.Roles["Admin"].Username)
+//	log.Println("        Admin pw ==>", config.Roles["Admin"].Password)
+//	log.Println("Partner username ==>", config.Roles["Partner"].Username)
+//	log.Println("      Partner pw ==>", config.Roles["Partner"].Password)
 //	log.Println("=========================================\n")
-//
 //}
