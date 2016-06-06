@@ -23,7 +23,7 @@ var (
 	to        string = "now"
 	country   string
 	msisdn    string = "*"
-	role      string
+	profile   string
 	config    tomlConfig
 	token     string
 	signature string
@@ -84,16 +84,16 @@ func setParams(w http.ResponseWriter, r *http.Request) {
 		msisdn = r.Form.Get("msisdn")
 	}
 
-	if r.Form.Get("id_partner") != "" {
-		role = r.Form.Get("id_partner")
+	if r.Form.Get("profile") != "" {
+		profile = r.Form.Get("profile")
 	}
 }
 
 func isAuthorized() bool {
 	//log.Println("signature", signature)
 	//log.Println("config signature", config.Signature)
-	log.Println("SIGNATUre a comaprer:" + config.Signature + "&" + country + "&" + from + "&" + to + "&" + msisdn + "&" + role)
-	return (signature == config.Signature+"&"+country+"&"+from+"&"+to+"&"+msisdn+"&"+role)
+	log.Println("SIGNATUre a comaprer:" + config.Signature + "&" + country + "&" + from + "&" + to + "&" + msisdn + "&" + profile)
+	return (signature == config.Signature+"&"+country+"&"+from+"&"+to+"&"+msisdn+"&"+profile)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -107,7 +107,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 		//add Authorization in Header
 
 		for _, currentRole := range config.Roles {
-			if currentRole.Id == role {
+			if currentRole.Profile == profile {
+				log.Println("currentRole:", currentRole.Username)
 				toencode = currentRole.Username + ":" + currentRole.Password
 				break
 			}
@@ -238,7 +239,7 @@ type tomlConfig struct {
 }
 
 type roles struct {
-	Id       string
+	Profile  string
 	Username string
 	Password string
 }
@@ -255,14 +256,10 @@ func readConfig() {
 	log.Println("            addr ==>", config.Addr)
 	log.Println("      decryptKey ==>", config.DecryptKey)
 	log.Println("       signature ==>", config.Signature)
-	log.Println("  Admin username ==>", config.Roles["Admin"].Username)
-	log.Println("        Admin pw ==>", config.Roles["Admin"].Password)
+	log.Println("  Admin username ==>", config.Roles["Manager"].Username)
+	log.Println("        Admin pw ==>", config.Roles["Manager"].Password)
 	log.Println("Partner username ==>", config.Roles["Partner"].Username)
 	log.Println("      Partner pw ==>", config.Roles["Partner"].Password)
 	log.Println("=========================================\n")
-
-	for _, v := range config.Roles {
-		log.Println(v)
-	}
 
 }

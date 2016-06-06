@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="conf.ini" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/conf.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            <state relative-caret-position="336">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -48,29 +48,28 @@
       <file leaf-file-name="token.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/token.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-676">
+            <state relative-caret-position="72">
               <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="235" column="25" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
+            <state relative-caret-position="176">
+              <caret line="242" column="23" selection-start-line="242" selection-start-column="23" selection-end-line="242" selection-end-column="23" />
               <folding>
                 <element signature="n#!!block;n#setupProxy#0" expanded="false" />
                 <element signature="n#!!block;n#process#0" expanded="false" />
+                <element signature="n#!!block;n#setupLog#0" expanded="false" />
                 <element signature="n#!!block;n#main#0" expanded="false" />
-                <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-                <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-                <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-                <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-                <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-                <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-                <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+                <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+                <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+                <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+                <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+                <element signature="e#5919#6053#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -109,7 +108,7 @@
       <file leaf-file-name="reverseproxy.go" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/go/src/net/http/httputil/reverseproxy.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="2520">
               <caret line="114" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
               <folding />
             </state>
@@ -137,8 +136,8 @@
         <option value="$PROJECT_DIR$/test2.go" />
         <option value="$PROJECT_DIR$/test1.go" />
         <option value="$PROJECT_DIR$/src/cmd/reverse_proxy/configFile.go" />
-        <option value="$PROJECT_DIR$/src/cmd/reverse_proxy/main.go" />
         <option value="$PROJECT_DIR$/src/cmd/reverse_proxy/conf.ini" />
+        <option value="$PROJECT_DIR$/src/cmd/reverse_proxy/main.go" />
       </list>
     </option>
   </component>
@@ -152,10 +151,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
+    <option name="x" value="-1" />
     <option name="y" value="25" />
-    <option name="width" value="1912" />
-    <option name="height" value="1050" />
+    <option name="width" value="1922" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -240,7 +239,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -302,6 +300,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,6 +444,8 @@
       <workItem from="1464678922669" duration="1798000" />
       <workItem from="1464764235254" duration="593000" />
       <workItem from="1464857514988" duration="5984000" />
+      <workItem from="1464956707011" duration="3226000" />
+      <workItem from="1465200184989" duration="1022000" />
     </task>
     <servers />
   </component>
@@ -460,7 +461,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180803000" />
+    <option name="totallyTimeSpent" value="185051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,16 +473,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="25" width="1912" height="1050" extended-state="0" />
+    <frame x="-1" y="25" width="1922" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12633833" sideWeight="0.49701494" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12779553" sideWeight="0.48596752" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26130098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12633833" sideWeight="0.50298506" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2584885" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12779553" sideWeight="0.5140325" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2464403" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -520,14 +521,13 @@
           <folding>
             <element signature="n#!!block;n#setupProxy#0" expanded="false" />
             <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
             <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -539,97 +539,13 @@
           <folding>
             <element signature="n#!!block;n#setupProxy#0" expanded="false" />
             <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
             <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/strings/strings.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15360">
-          <caret line="643" column="5" selection-start-line="643" selection-start-column="5" selection-end-line="643" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/net/url/url.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7368">
-          <caret line="314" column="8" selection-start-line="314" selection-start-column="8" selection-end-line="314" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/crypto/aes/cipher.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/crypto/cipher/cipher.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/net/http/cookie.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/net/http/request.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6192">
-          <caret line="274" column="56" selection-start-line="274" selection-start-column="56" selection-end-line="274" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/net/http/httputil/reverseproxy.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3120">
-          <caret line="139" column="58" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/net/http/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38232">
-          <caret line="1613" column="5" selection-start-line="1613" selection-start-column="5" selection-end-line="1613" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#setupProxy#0" expanded="false" />
-            <element signature="n#!!block;n#process#0" expanded="false" />
-            <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -705,14 +621,95 @@
           <folding>
             <element signature="n#!!block;n#setupProxy#0" expanded="false" />
             <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
             <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/strings/strings.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15360">
+          <caret line="643" column="5" selection-start-line="643" selection-start-column="5" selection-end-line="643" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/net/url/url.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7368">
+          <caret line="314" column="8" selection-start-line="314" selection-start-column="8" selection-end-line="314" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/crypto/aes/cipher.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/crypto/cipher/cipher.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/net/http/cookie.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/net/http/request.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6192">
+          <caret line="274" column="56" selection-start-line="274" selection-start-column="56" selection-end-line="274" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/net/http/httputil/reverseproxy.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3120">
+          <caret line="139" column="58" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/net/http/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38232">
+          <caret line="1613" column="5" selection-start-line="1613" selection-start-column="5" selection-end-line="1613" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#setupProxy#0" expanded="false" />
+            <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -780,14 +777,13 @@
           <folding>
             <element signature="n#!!block;n#setupProxy#0" expanded="false" />
             <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
             <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -807,14 +803,13 @@
           <folding>
             <element signature="n#!!block;n#setupProxy#0" expanded="false" />
             <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
             <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -826,14 +821,13 @@
           <folding>
             <element signature="n#!!block;n#setupProxy#0" expanded="false" />
             <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
             <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -910,7 +904,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/token.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-676">
+        <state relative-caret-position="72">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
           <folding />
         </state>
@@ -918,28 +912,9 @@
     </entry>
     <entry file="file://$USER_HOME$/go/src/net/http/httputil/reverseproxy.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="2520">
           <caret line="114" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="235" column="25" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!block;n#setupProxy#0" expanded="false" />
-            <element signature="n#!!block;n#process#0" expanded="false" />
-            <element signature="n#!!block;n#main#0" expanded="false" />
-            <marker date="1464873707633" expanded="false" signature="21:189" placeholder="..." />
-            <marker date="1464873707633" expanded="false" signature="1706:2014" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="3522:3712" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4204:4471" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="4510:5241" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5282:5421" placeholder="{...}" />
-            <marker date="1464873707633" expanded="false" signature="5485:5716" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,9 +928,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/conf.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="336">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmd/reverse_proxy/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="242" column="23" selection-start-line="242" selection-start-column="23" selection-end-line="242" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!block;n#setupProxy#0" expanded="false" />
+            <element signature="n#!!block;n#process#0" expanded="false" />
+            <element signature="n#!!block;n#setupLog#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+            <element signature="n#!!block;n#decrypt_token#0" expanded="false" />
+            <element signature="n#!!block;n#cbcDecrypt#0" expanded="false" />
+            <element signature="n#!!block;n#PKCS5UnPadding#0" expanded="false" />
+            <element signature="n#!!block;n#setTokenAsCookie#0" expanded="false" />
+            <element signature="e#5919#6053#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
