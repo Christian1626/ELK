@@ -92,7 +92,8 @@ func setParams(w http.ResponseWriter, r *http.Request) {
 func isAuthorized() bool {
 	//log.Println("signature", signature)
 	//log.Println("config signature", config.Signature)
-	log.Println("SIGNATUre a comaprer:" + config.Signature + "&" + country + "&" + from + "&" + to + "&" + msisdn + "&" + profile)
+	log.Println("SIGNATURE:" + signature)
+	log.Println("SIGNATURE a comparer:" + config.Signature + "&" + country + "&" + from + "&" + to + "&" + msisdn + "&" + profile)
 	return (signature == config.Signature+"&"+country+"&"+from+"&"+to+"&"+msisdn+"&"+profile)
 }
 
