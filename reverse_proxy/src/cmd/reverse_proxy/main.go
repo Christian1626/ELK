@@ -4,184 +4,128 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/base64"
+	"fmt"
 	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"os"
 	"strings"
 	"time"
-
-	"fmt"
-	"os"
 
 	"github.com/BurntSushi/toml"
 )
 
 var (
-	rp        *httputil.ReverseProxy
-	from      string = "now-15m"
-	to        string = "now"
-	country   string
-	msisdn    string = "*"
-	profile   string
-	config    tomlConfig
-	token     string
-	signature string
+	rp *httputil.ReverseProxy
+	//from      string = "now-15m"
+	//to        string = "now"
+	//country   string
+	//msisdn    string = "*"
+	profile string
+	config  tomlConfig
+	//token     string
+	//signature string
 )
 
-func setupProxy(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm() // parse arguments
-
-	//if token cookie exists
-	token_cookie, err := r.Cookie("token")
-	if err == nil {
-		log.Println("Cookie found:", token_cookie.Value)
-		token = token_cookie.Value
-		process(w, r)
-
-	} else if r.Form.Get("token") != "" {
-		log.Println("Token Query param found")
-		process(w, r)
-	}
-
-	w.Write([]byte("Access Forbidden"))
-	return
-}
-
-func process(w http.ResponseWriter, r *http.Request) {
-	setParams(w, r)
-	decrypt_token()
-
-	log.Println("isAuth", isAuthorized())
-	if isAuthorized() {
-		redirect(w, r)
-	}
-}
-
-func setParams(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
-
-	log.Println("Params => token:", r.Form.Get("token"), "country:", r.Form.Get("country"), "from:", r.Form.Get("from"), "to:", r.Form.Get("to"), "msisdn:", r.Form.Get("msisdn"))
-
-	if r.Form.Get("token") != "" {
-		token = r.Form.Get("token")
-		setTokenAsCookie(w, r)
-	}
-
-	if r.Form.Get("country") != "" {
-		country = r.Form.Get("country")
-	}
-
-	if r.Form.Get("from") != "" {
-		from = r.Form.Get("from")
-	}
-
-	if r.Form.Get("to") != "" {
-		to = r.Form.Get("to")
-	}
-
-	if r.Form.Get("msisdn") != "" {
-		msisdn = r.Form.Get("msisdn")
-	}
-
-	if r.Form.Get("profile") != "" {
-		profile = r.Form.Get("profile")
-	}
-}
-
-func isAuthorized() bool {
-	//log.Println("signature", signature)
-	//log.Println("config signature", config.Signature)
-	log.Println("SIGNATURE:" + signature)
-	log.Println("SIGNATURE a comparer:" + config.Signature + "&" + country + "&" + from + "&" + to + "&" + msisdn + "&" + profile)
-	return (signature == config.Signature+"&"+country+"&"+from+"&"+to+"&"+msisdn+"&"+profile)
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	//log.Println(r.URL)
-
-	if r.URL.Path == "/" {
-		//log.Println("setupproxy")
-		setupProxy(w, r)
-	} else {
-		toencode := ""
-		//add Authorization in Header
-
-		for _, currentRole := range config.Roles {
-			if currentRole.Profile == profile {
-				log.Println("currentRole:", currentRole.Username)
-				toencode = currentRole.Username + ":" + currentRole.Password
-				break
-			}
-		}
-
-		auth_key := base64.StdEncoding.EncodeToString([]byte(toencode))
-		r.Header.Set("Authorization", "Basic "+auth_key)
-		//log.Println("auth_key", auth_key)
-
-		//log.Println("reverseproxy")
-		rp.ServeHTTP(w, r)
-	}
-}
-
-func redirect(w http.ResponseWriter, r *http.Request) {
-	var redirectPage = `<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	    <meta charset="UTF-8">
-	    <title>Redirection</title>
-	    <SCRIPT language="JavaScript">
-		    document.location.href="http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'` + from + `',mode:absolute,to:'` + to + `T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:` + msisdn + `')))"
-	    </SCRIPT>
-	</head>
-	</html>`
-	log.Println("redirect")
-	w.Header().Add("Content-Type", "text/html")
-	w.Header().Add("Cache-Control", "no-cache, no-store, must-revalidate")
-	w.Header().Add("Pragma", "no-cache")
-	w.Header().Add("Expires", "0")
-	w.Header().Add("Www-Authenticate", "Basic")
-	w.Header().Add("Authorization", "Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu")
-	w.Write([]byte(redirectPage))
-}
-
-func setupLog() {
-	f, err := os.OpenFile("/var/log/oma-canalv2/reverseproxy.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	if err != nil {
-		fmt.Print("error opening file: %v", err)
-	}
-
-	log.SetOutput(f)
-}
-
 func main() {
-	setupLog()
-
 	readConfig()
+	setupLog()
 
 	//set up reverse proxy
 	rp = httputil.NewSingleHostReverseProxy(&url.URL{
 		Scheme: "http",
 		Host:   config.UrlKibana,
-		User:   url.UserPassword("admin_kibana", "admin_kibana"),
 	})
 
 	log.Println("Reverse proxy is listening on ", config.Addr)
 	http.ListenAndServe(config.Addr, http.HandlerFunc(index))
 }
 
+func index(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	log.Println("Path loaded:" + r.URL.Path)
+	if r.URL.Path == "/" {
+		setupProxy(w, r)
+	} else {
+		r.Header.Set("Authorization", "Basic "+profile)
+		rp.ServeHTTP(w, r)
+	}
+}
+
+func setupProxy(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm() // parse arguments
+
+	if r.Form.Get("token") != "" {
+		//log.Println("Params:", r.Form)
+		tokenDecrypted := decryptToken(r)
+		if isAuthorized(r, tokenDecrypted) {
+			redirect(w, r)
+		}
+	}
+
+	w.Write([]byte("Access Forbidden"))
+	return
+}
+
+func isAuthorized(r *http.Request, tokenDecrypted string) bool {
+	//log.Println("SIGNATURE:" + tokenDecrypted)
+	isAuth := (tokenDecrypted == config.Signature+"&"+r.Form.Get("country")+"&"+r.Form.Get("from")+"&"+r.Form.Get("to")+"&"+r.Form.Get("profile"))
+	log.Println("User isAuth:", isAuth)
+	return isAuth
+}
+
+func redirect(w http.ResponseWriter, r *http.Request) {
+	log.Println("Path:", r.URL.Path, "   Build Kibana URL with params")
+	var redirectPage = `<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Redirection</title>
+	    <SCRIPT language="JavaScript">
+	    	document.location.href="http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'` + r.Form.Get("from") + `',mode:absolute,to:'` + r.Form.Get("to") + `T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:` + r.Form.Get("msisdn") + `')))"
+	    </SCRIPT>
+	</head>
+	</html>`
+
+	//add Authorization in Header
+	for _, currentRole := range config.Roles {
+		if currentRole.Profile == r.Form.Get("profile") {
+			log.Println("User Profile:", currentRole.Profile, "User Role:", currentRole.Username)
+			toencode := currentRole.Username + ":" + currentRole.Password
+			profile = base64.StdEncoding.EncodeToString([]byte(toencode))
+			//set profile as cookie
+			cookie := &http.Cookie{Name: "profile", Value: profile, Expires: time.Now().Add(30 * 24 * time.Hour), HttpOnly: true}
+			http.SetCookie(w, cookie)
+			r.AddCookie(cookie)
+			break
+		}
+	}
+
+	log.Println("Access to kibana")
+
+	w.Write([]byte(redirectPage))
+
+	//http.Redirect(w, r, "http://www.google.com", 301)
+
+}
+
 ///////////////////////////////////////////////
 //                TOKEN
 //////////////////////////////////////////////
-func decrypt_token() {
+func decryptToken(r *http.Request) string {
 	//replace spaces with '+'
-	token = strings.Replace(token, " ", "+", -1)
+	newToken := strings.Replace(r.Form.Get("token"), " ", "+", -1)
+	r.Form.Set("token", newToken)
 
 	//get decrypted token
-	signature = string(cbcDecrypt(token))
+	decryptedToken := string(cbcDecrypt(newToken))
+
 	//replace null characters
-	signature = strings.Replace(signature, "\x00", "", -1)
-	log.Println("Decrypted token :", signature)
+	decryptedToken = strings.Replace(decryptedToken, "\x00", "", -1)
+	log.Println("Decrypted token :", decryptedToken)
+
+	return decryptedToken
 }
 
 func cbcDecrypt(text1 string) []byte {
@@ -219,24 +163,17 @@ func PKCS5UnPadding(src []byte) []byte {
 	return src[:(length)]
 }
 
-func setTokenAsCookie(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
-	log.Println("Set Token as Cookie")
-	cookie := &http.Cookie{Name: "token", Value: r.Form.Get("token"), Expires: time.Now().Add(30 * 24 * time.Hour), HttpOnly: true}
-	http.SetCookie(w, cookie)
-	r.AddCookie(cookie)
-}
-
 ///////////////////////////////////////////////
 //                CONFIG
 //////////////////////////////////////////////
 type tomlConfig struct {
-	UrlKibana  string
-	Addr       string
-	Country    string
-	DecryptKey string
-	Signature  string
-	Roles      map[string]roles
+	UrlKibana   string
+	Addr        string
+	Country     string
+	PathLogFile string
+	DecryptKey  string
+	Signature   string
+	Roles       map[string]roles
 }
 
 type roles struct {
@@ -255,6 +192,7 @@ func readConfig() {
 	log.Println("         country ==>", config.Country)
 	log.Println("       urlKibana ==>", config.UrlKibana)
 	log.Println("            addr ==>", config.Addr)
+	log.Println("  path log file  ==>", config.PathLogFile)
 	log.Println("      decryptKey ==>", config.DecryptKey)
 	log.Println("       signature ==>", config.Signature)
 	log.Println("  Admin username ==>", config.Roles["Manager"].Username)
@@ -263,4 +201,13 @@ func readConfig() {
 	log.Println("      Partner pw ==>", config.Roles["Partner"].Password)
 	log.Println("=========================================\n")
 
+}
+
+func setupLog() {
+	f, err := os.OpenFile(config.PathLogFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		fmt.Print("error opening file: %v", err)
+	}
+
+	log.SetOutput(f)
 }
