@@ -11,7 +11,6 @@ import (
 	"net/url"
 	"os"
 	"strings"
-	"time"
 
 	"github.com/BurntSushi/toml"
 )
@@ -46,8 +45,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	log.Println("Path loaded:" + r.URL.Path)
 	if r.URL.Path == "/" {
+		log.Println("Path 3:" + r.URL.Path)
 		setupProxy(w, r)
+	} else if r.URL.Path == "/test" {
+		log.Println("Path 2:" + r.URL.Path)
+		redirect(w, r)
 	} else {
+		log.Println("Path 1:" + r.URL.Path)
 		r.Header.Set("Authorization", "Basic "+profile)
 		rp.ServeHTTP(w, r)
 	}
@@ -77,16 +81,16 @@ func isAuthorized(r *http.Request, tokenDecrypted string) bool {
 
 func redirect(w http.ResponseWriter, r *http.Request) {
 	log.Println("Path:", r.URL.Path, "   Build Kibana URL with params")
-	var redirectPage = `<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	    <meta charset="UTF-8">
-	    <title>Redirection</title>
-	    <SCRIPT language="JavaScript">
-	    	document.location.href="http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'` + r.Form.Get("from") + `',mode:absolute,to:'` + r.Form.Get("to") + `T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:` + r.Form.Get("msisdn") + `')))"
-	    </SCRIPT>
-	</head>
-	</html>`
+	//var redirectPage = `<!DOCTYPE html>
+	//<html lang="en">
+	//<head>
+	//    <meta charset="UTF-8">
+	//    <title>Redirection</title>
+	//    <SCRIPT language="JavaScript">
+	//    	document.location.href="http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'` + r.Form.Get("from") + `',mode:absolute,to:'` + r.Form.Get("to") + `T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:` + r.Form.Get("msisdn") + `')))"
+	//    </SCRIPT>
+	//</head>
+	//</html>`
 
 	//add Authorization in Header
 	for _, currentRole := range config.Roles {
@@ -95,19 +99,26 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 			toencode := currentRole.Username + ":" + currentRole.Password
 			profile = base64.StdEncoding.EncodeToString([]byte(toencode))
 			//set profile as cookie
-			cookie := &http.Cookie{Name: "profile", Value: profile, Expires: time.Now().Add(30 * 24 * time.Hour), HttpOnly: true}
-			http.SetCookie(w, cookie)
-			r.AddCookie(cookie)
+			//cookie := &http.Cookie{Name: "profile", Value: profile, Expires: time.Now().Add(30 * 24 * time.Hour), HttpOnly: true}
+			//http.SetCookie(w, cookie)
+			//r.AddCookie(cookie)
 			break
 		}
 	}
 
 	log.Println("Access to kibana")
+	//
+	if r.URL.Path == "/" {
+		http.PostForm("http://localhost:9090/test", url.Values{})
 
-	w.Write([]byte(redirectPage))
+	} else {
+		http.Redirect(w, r, "http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", 302)
+	}
 
-	//http.Redirect(w, r, "http://www.google.com", 301)
+	//http.PostForm("http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", url.Values{})
 
+	//http.Redirect(w, r, "http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", 302)
+	//w.Write([]byte(redirectPage))
 }
 
 ///////////////////////////////////////////////
