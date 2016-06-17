@@ -13,18 +13,13 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/toml"
+	"github.com/gorilla/sessions"
 )
 
 var (
-	rp *httputil.ReverseProxy
-	//from      string = "now-15m"
-	//to        string = "now"
-	//country   string
-	//msisdn    string = "*"
-	profile string
-	config  tomlConfig
-	//token     string
-	//signature string
+	rp     *httputil.ReverseProxy
+	config tomlConfig
+	store  = sessions.NewCookieStore([]byte("authentication_profile_key"))
 )
 
 func main() {
@@ -45,14 +40,25 @@ func index(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	log.Println("Path loaded:" + r.URL.Path)
 	if r.URL.Path == "/" {
-		log.Println("Path 3:" + r.URL.Path)
 		setupProxy(w, r)
-	} else if r.URL.Path == "/test" {
-		log.Println("Path 2:" + r.URL.Path)
-		redirect(w, r)
 	} else {
-		log.Println("Path 1:" + r.URL.Path)
-		r.Header.Set("Authorization", "Basic "+profile)
+		session, err := store.Get(r, "session-profile")
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		//first page called by kibana
+		if r.URL.Path == "/app/kibana" {
+			if profile := r.Form.Get("profile"); strings.Contains(decryptToken(r.Form.Get("token")), profile) {
+				// Set some session values.
+				session.Values["auth"] = getBasicAuth(profile)
+				session.Save(r, w)
+			}
+		}
+
+		//set Authorization header
+		r.Header.Set("Authorization", "Basic "+session.Values["auth"].(string))
 		rp.ServeHTTP(w, r)
 	}
 }
@@ -60,9 +66,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 func setupProxy(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm() // parse arguments
 
-	if r.Form.Get("token") != "" {
+	if token := r.Form.Get("token"); token != "" {
 		//log.Println("Params:", r.Form)
-		tokenDecrypted := decryptToken(r)
+		tokenDecrypted := decryptToken(token)
 		if isAuthorized(r, tokenDecrypted) {
 			redirect(w, r)
 		}
@@ -84,50 +90,42 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 	//var redirectPage = `<!DOCTYPE html>
 	//<html lang="en">
 	//<head>
-	//    <meta charset="UTF-8">
-	//    <title>Redirection</title>
-	//    <SCRIPT language="JavaScript">
-	//    	document.location.href="http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'` + r.Form.Get("from") + `',mode:absolute,to:'` + r.Form.Get("to") + `T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:` + r.Form.Get("msisdn") + `')))"
-	//    </SCRIPT>
+	//<meta charset="UTF-8">
+	//<title>Title</title>
 	//</head>
+	//<body>
+	//	<form method="GET" action="http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'` + r.Form.Get("from") + `',mode:absolute,to:'` + r.Form.Get("to") + `T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:` + r.Form.Get("msisdn") + `')))" id="form">
+	//		<input type="text" name="profile" value="` + r.Form.Get("profile") + `"><br><br>
+	//		<input type="submit" value="Submit">
+	//	</form>
+	//	<script language="JavaScript">
+	//		document.getElementById("form").submit();
+	//	</script>
+	//</body>
 	//</html>`
 
+	log.Println("Access to kibana")
+	http.Redirect(w, r, "http://localhost:9090/app/kibana?token="+r.Form.Get("token")+"&profile="+r.Form.Get("profile")+"#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", 302)
+	//w.Write([]byte(redirectPage))
+}
+
+func getBasicAuth(profile string) string {
 	//add Authorization in Header
 	for _, currentRole := range config.Roles {
-		if currentRole.Profile == r.Form.Get("profile") {
-			log.Println("User Profile:", currentRole.Profile, "User Role:", currentRole.Username)
-			toencode := currentRole.Username + ":" + currentRole.Password
-			profile = base64.StdEncoding.EncodeToString([]byte(toencode))
-			//set profile as cookie
-			//cookie := &http.Cookie{Name: "profile", Value: profile, Expires: time.Now().Add(30 * 24 * time.Hour), HttpOnly: true}
-			//http.SetCookie(w, cookie)
-			//r.AddCookie(cookie)
-			break
+		if currentRole.Profile == profile {
+			auth := currentRole.Username + ":" + currentRole.Password
+			return base64.StdEncoding.EncodeToString([]byte(auth))
 		}
 	}
-
-	log.Println("Access to kibana")
-	//
-	if r.URL.Path == "/" {
-		http.PostForm("http://localhost:9090/test", url.Values{})
-
-	} else {
-		http.Redirect(w, r, "http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", 302)
-	}
-
-	//http.PostForm("http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", url.Values{})
-
-	//http.Redirect(w, r, "http://localhost:9090/app/kibana#/dashboard/dashboard_canalv2?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'"+r.Form.Get("from")+"',mode:absolute,to:'"+r.Form.Get("to")+"T21:59:59.999Z'))&_a=(query:(query_string:(analyze_wildcard:!t,query:'msisdn:"+r.Form.Get("msisdn")+"')))", 302)
-	//w.Write([]byte(redirectPage))
+	return ""
 }
 
 ///////////////////////////////////////////////
 //                TOKEN
 //////////////////////////////////////////////
-func decryptToken(r *http.Request) string {
+func decryptToken(token string) string {
 	//replace spaces with '+'
-	newToken := strings.Replace(r.Form.Get("token"), " ", "+", -1)
-	r.Form.Set("token", newToken)
+	newToken := strings.Replace(token, " ", "+", -1)
 
 	//get decrypted token
 	decryptedToken := string(cbcDecrypt(newToken))
