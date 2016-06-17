@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# declare -a country=("mg" "ci" "sn" "cm" "ml" "ne" "gn" "cd" "*")
-declare -a country=("ci" "*")
+declare -a country=("mg" "ci" "sn" "cm" "ml" "ne" "gn" "cd" "*")
+# declare -a country=("ne" "*")
 
 #./import_all.sh .kibana_test logstash-canalv2 4.4.1 /home/christian/Documents/ELK/Dashboards/dashboard_test 
 if [ $# -eq 4 ] 

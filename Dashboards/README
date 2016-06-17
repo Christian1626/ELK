@@ -1,0 +1,17 @@
+
+
+#export les dashboards de kibana_mg  ( /!\  ".kibana_mg" doit exister dans la base elasticsearch)
+./export.sh .kibana_mg /home/christian/Documents/ELK/Dashboards/dashboard_test_mg              
+
+
+#recopie le dashboard précedement pour chaque pays 
+./create_all_dashboard.sh mg dashboard_test_mg   
+
+
+#importer tous les pays
+./import_all.sh .kibana_test logstash-canalv2 4.4.1 /home/christian/Documents/ELK/Dashboards/dashboard_test
+
+
+
+#import un pays
+./import.sh .kibana_test_mg logstash-canalv2-mg /home/christian/Documents/ELK/Dashboards/dashboard_test_mg 4.4.1

@@ -11,7 +11,7 @@ if [ $# -eq 2 ]
 	   echo "$i"
 	   if [ $1 != "$i" ]
 	   then
-	   		./dashboard_replace.sh $1 "$i" $2
+	   		./create_dashboard.sh $1 "$i" $2
 	   fi
 	   # or do whatever with individual element of the array
 	done
